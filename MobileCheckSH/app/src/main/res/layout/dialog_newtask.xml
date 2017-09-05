@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <RelativeLayout
+        android:id="@+id/caseno_rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <EditText
+            android:id="@+id/caseno_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/caseNo"
+            android:textColor="@color/defaulttext_black"
+            android:textSize="@dimen/default_size"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/carno_rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/caseno_rel"
+        >
+        <EditText
+            android:id="@+id/carno_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carNo"
+            android:textColor="@color/defaulttext_black"
+            android:textSize="@dimen/default_size"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/call_btn"
+        android:text="@string/call"
+        android:layout_width="@dimen/btnw_small"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>
