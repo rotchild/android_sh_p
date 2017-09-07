@@ -4,4 +4,5 @@
     <color name="white">#FFFFFF</color>
     <color name="halftrans">#FAFFFFFF</color>
     <color name="orangered">#EB645E</color>
+    <color name="black">#000000</color>
 </resources>

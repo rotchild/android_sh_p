@@ -1,0 +1,220 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+     <cx.mobilechecksh.mvideo.picc.ui.Titlebar
+       xmlns:custom="http://schemas.android.com/apk/res/cx.mobilechecksh"
+        android:id="@+id/titlebar"
+        custom:titlebarBackground="?attr/titlebar_backgroud"
+        custom:titlebarLeftBackground="?attr/titlebar_left_backgroud"
+        custom:titlebarRightBackground="?attr/titlebar_right_backgroud"
+        custom:titlebarTitle="@string/setting_page"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+     
+        <ScrollView
+            android:layout_below="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadeScrollbars="true" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <EditText
+                    android:id="@+id/ip"
+                    style="@style/setting_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_edittext_height" />
+
+                <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/settingip_ip" />
+            </RelativeLayout>
+            
+            
+                  <TextView 
+                style="@style/setting_edittext_text"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal"
+				android:text="@string/setting_ip_format" />
+                  
+                  
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <EditText
+                    android:id="@+id/sign"
+                    style="@style/setting_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_edittext_height" />
+
+                <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/settingip_sign" />
+            </RelativeLayout>
+
+      
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_margin="10dip" >
+
+                <EditText
+                    android:id="@+id/FPS"
+                    style="@style/setting_edittext"
+                    android:layout_width="fill_parent"
+					android:inputType="number"
+                    android:layout_height="@dimen/default_edittext_height" />
+
+                <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/settingip_FPS" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <EditText
+                    android:id="@+id/BIT"
+                    style="@style/setting_edittext"
+                    android:layout_width="fill_parent"
+                    android:inputType="number"
+                    android:layout_height="@dimen/default_edittext_height" />
+
+                <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/settingip_BIT" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <Spinner
+                    android:id="@+id/connect_type"
+                    style="@style/setting_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_edittext_height" />
+
+                <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/settingip_connect_type" />
+                
+                <ImageView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/settingip_triangle"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <Spinner
+                    android:id="@+id/pw_ph"
+                    style="@style/setting_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_edittext_height" />
+
+                <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/settingip_pwph" />
+                
+                <ImageView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/settingip_triangle"/>
+            </RelativeLayout>
+            
+              <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+                <Button 
+                    android:id="@+id/setting_about"
+                    style="@style/setting_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_edittext_height" />
+                <ImageView 
+                    android:src="@drawable/chevron"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"/>
+                
+                  <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/about_page" />
+
+            </RelativeLayout>
+            
+			<RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+                <Button 
+                    android:id="@+id/fixnet"
+                    style="@style/setting_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_edittext_height" />
+                <ImageView 
+                    android:src="@drawable/chevron"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"/>
+                
+                  <TextView
+                    style="@style/setting_edittext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_edittext_height"
+                    android:text="@string/fix_net" />
+
+            </RelativeLayout>
+            
+            
+                               
+              
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

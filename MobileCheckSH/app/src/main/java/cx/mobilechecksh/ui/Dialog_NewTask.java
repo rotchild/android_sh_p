@@ -38,5 +38,11 @@ dialogView= LayoutInflater.from(getContext()).inflate(R.layout.dialog_newtask,nu
 public void setOnPositiveListener(View.OnClickListener listener){
     call.setOnClickListener(listener);
 }
+public String  getCaseNo(){
+    return caseNoET.getText().toString().trim();
+}
+    public String  getCarNo(){
+        return carNoET.getText().toString().trim();
+    }
 
 }

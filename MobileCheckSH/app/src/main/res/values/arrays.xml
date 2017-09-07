@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pref_camera_picturesize_entryvalues" translatable="false">
+        <item>640x480</item>
+        <item>2592x1944</item>
+        <item>2592x1936</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1024x768</item>
+        <item>320x240</item>
+    </string-array>
+    <string-array name="pref_camera_previewsize_entryvalues" translatable="false">
+        <item>1280x720</item>
+        <item>640x480</item>
+       <!--  <item>1920x1088</item>
+        <item>1280x720</item>
+        <item>800x480</item>
+        <item>768x432</item>
+        <item>720x480</item>
+        <item>576x432</item>
+        <item>480x320</item>
+        <item>384x288</item>
+        <item>320x240</item>
+        <item>240x160</item>
+        <item>176x144</item> -->
+    </string-array>
+    <string-array name="pref_camera_focusmode_entryvalues" translatable="false">
+        <item>auto</item>
+        <item>infinity</item>
+        <item>macro</item>
+        <item>edof</item>
+    </string-array>
+    <string-array name="pref_camera_flashmode_entryvalues" translatable="false">
+        <item>off</item>
+        <item>auto</item>
+        <item>on</item>
+        <item>off</item>
+        <item>torch</item>
+    </string-array>
+    <string-array name="pref_camera_fps_entryvalues" translatable="false">
+        <item>30</item>
+    </string-array>
+    <string-array name="pref_camera_sign_entryvalues" translatable="false">
+        <item>1234</item>
+    </string-array>
+    <string-array name="pref_camera_bitrate_entryvalues" translatable="false">
+        <item>800</item>
+    </string-array>
+    <string-array name="pref_camera_serverip_entryvalues" translatable="false">
+        <item>192.168.1.119</item>
+     </string-array>
+    <string-array name="pref_camera_connect_entryvalues" translatable="false">
+        <item>UDP</item>
+        <item>TCP</item>
+    </string-array>
+        <!-- Camera Preferences Scene Mode dialog box entries -->
+    <string-array name="pref_camera_scenemode_entries" translatable="false">
+        <item>@string/pref_camera_scenemode_entry_auto</item>
+        <item>@string/pref_camera_scenemode_entry_action</item>
+        <item>@string/pref_camera_scenemode_entry_portrait</item>
+        <item>@string/pref_camera_scenemode_entry_landscape</item>
+        <item>@string/pref_camera_scenemode_entry_night</item>
+        <item>@string/pref_camera_scenemode_entry_night_portrait</item>
+        <item>@string/pref_camera_scenemode_entry_theatre</item>
+        <item>@string/pref_camera_scenemode_entry_beach</item>
+        <item>@string/pref_camera_scenemode_entry_snow</item>
+        <item>@string/pref_camera_scenemode_entry_sunset</item>
+        <item>@string/pref_camera_scenemode_entry_steadyphoto</item>
+        <item>@string/pref_camera_scenemode_entry_fireworks</item>
+        <item>@string/pref_camera_scenemode_entry_party</item>
+        <item>@string/pref_camera_scenemode_entry_candlelight</item>
+        <item>@string/pref_camera_scenemode_entry_sports</item>
+        <item>@string/pref_camera_scenemode_entry_dusk_dawn</item>
+        <item>@string/pref_camera_scenemode_entry_fall_color</item>
+        <item>@string/pref_camera_scenemode_entry_back_light</item>
+    </string-array>
+
+    <string-array name="pref_camera_scenemode_entryvalues" translatable="false">
+        <item>auto</item>
+        <item>action</item>
+        <item>portrait</item>
+        <item>landscape</item>
+        <item>night</item>
+        <item>night-portrait</item>
+        <item>theatre</item>
+        <item>beach</item>
+        <item>snow</item>
+        <item>sunset</item>
+        <item>steadyphoto</item>
+        <item>fireworks</item>
+        <item>party</item>
+        <item>candlelight</item>
+        <item>sports</item>
+        <item>dusk-dawn</item>
+        <item>fall-color</item>
+        <item>back-light</item>
+    </string-array>
+    
+
+</resources>

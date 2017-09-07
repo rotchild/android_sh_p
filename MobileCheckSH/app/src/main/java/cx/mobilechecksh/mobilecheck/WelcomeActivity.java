@@ -4,20 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cx.mobilechecksh.R;
 import cx.mobilechecksh.data.DataHandler;
 import cx.mobilechecksh.global.G;
 import cx.mobilechecksh.net.HttpResponseHandler;
-import cx.mobilechecksh.theme.BaseActivity;
+import cx.mobilechecksh.theme.MBaseActivity;
 import cx.mobilechecksh.utils.AppManager;
 import cx.mobilechecksh.utils.IMEIManager;
 import cx.mobilechecksh.utils.UserManager;
 
-public class WelcomeActivity extends BaseActivity {
-String IMEI="";
-    String userName="";
+public class WelcomeActivity extends MBaseActivity {
+    String userName="";//修理厂名称
+    String deviceNo="";//修理厂名称
     Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +37,10 @@ String IMEI="";
         return IMEIManager.getInstance(mContext).getIMEI();
     }
 
-    private void getUserName(String IMEI) {
+    private void getUserName(String deviceNo) {
         DataHandler dataHandler=new DataHandler(mContext);
         dataHandler.setmIsShowProgressDialog(true);
-        dataHandler.getUserName(IMEI,mUserNameRepsonse);
+        dataHandler.getUserName(deviceNo,mUserNameRepsonse);
     }
     HttpResponseHandler mUserNameRepsonse=new HttpResponseHandler(){
         @Override
@@ -48,14 +49,22 @@ String IMEI="";
             if(success){
                 try{
                     JSONObject jsonObject=new JSONObject(response);
-                    userName = jsonObject.getJSONObject("data").getString(
-                            "station_name");
+                    boolean dataSuccess=jsonObject.getBoolean("success");
+                    if(dataSuccess){
+                        userName = jsonObject.getJSONObject("data").getString(
+                                "station_name");
+                    }else {
+                        JSONObject err=jsonObject.getJSONObject("err");
+                        String message=err.getString("message");
+                        G.showToast(mContext,message,false);
+                    }
+
                 }catch(Exception e){
                     e.printStackTrace();
                     G.showToast(mContext,mContext.getResources().getString(R.string.response_exception),false);
                     return;
                 }
-                UserManager.getInstance().saveUserInfo(mContext,userName);
+                UserManager.getInstance().saveUserInfo(mContext,userName,deviceNo);
                 Intent toLogin=new Intent(mContext,LoginActivity.class);
                 startActivity(toLogin);
                 AppManager.getAppManager().finishActivity();
@@ -67,11 +76,12 @@ String IMEI="";
 
 
     private void intView() {
-        IMEI=getIMEI();
-        getUserName(IMEI);
-        Intent toLogin=new Intent(mContext,LoginActivity.class);
+        deviceNo=getIMEI();
+        deviceNo="201708311544";
+        getUserName(deviceNo);
+        /*Intent toLogin=new Intent(mContext,LoginActivity.class);
         startActivity(toLogin);
-        AppManager.getAppManager().finishActivity();
+        AppManager.getAppManager().finishActivity();*/
     }
 
 

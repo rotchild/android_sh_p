@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+      android:layout_height="48dp"
+    android:background="@drawable/ui_title_bg" 
+    android:gravity="center_vertical"
+    android:padding="5dip"
+    android:id="@+id/titlebar_layout"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/titlebar_leftLayout"
+        android:layout_width="70dip"
+        android:layout_height="40dip"
+        android:layout_margin="5dip"
+        android:tag="left"
+        android:visibility="invisible" >
+<!-- android:background="@drawable/ui_titlebar2_leftbg_selector" -->
+        
+        
+        <ImageView
+            android:id="@+id/titlebar_leftBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"  
+            android:tag="left" />
+<!-- android:src="@drawable/ui_titlebar2_back_icon" -->
+        
+         <ImageView
+            android:id="@+id/titlebar_leftBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
+            android:tag="left" />
+         
+        <TextView
+            android:id="@+id/titlebar_leftTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:tag="left" />
+        <!-- style="@style/PA.ui.titlebar2_text" -->
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/titlebar_centerLayout"
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:tag="center" >
+
+        <TextView
+            android:id="@+id/titlebar_center_text"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:tag="center" />
+        
+          <ImageView
+            android:id="@+id/titlebar_centerBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"
+            android:layout_toRightOf="@+id/titlebar_center_text"
+            android:visibility="gone"
+            android:tag="center" />
+        <!-- style="@style/PA.ui.titlebar2_centenText" -->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/titlebar_rightLayout"
+        android:layout_width="70dip"
+        android:layout_height="40dip"
+        android:layout_margin="5dip"
+        android:padding="2dip"
+        android:tag="right"
+        android:visibility="invisible" >
+        <!-- android:background="@drawable/ui_titlebar2_rightbg_selector" -->
+
+        <ImageView
+            android:id="@+id/titlebar_rightBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"
+            android:tag="right" />
+
+        <TextView
+            android:id="@+id/titlebar_rightTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/white"
+            android:tag="right" />
+        <!-- style="@style/PA.ui.titlebar2_text" -->
+        
+    </RelativeLayout>
+
+</LinearLayout>

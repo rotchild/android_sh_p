@@ -58,6 +58,12 @@
         android:orientation="vertical"
         android:padding="5dp"
         >
+        <Button
+            android:id="@+id/toVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="摄像"
+            />
     <EditText
         android:id="@+id/cur_search_et"
         android:layout_width="match_parent"

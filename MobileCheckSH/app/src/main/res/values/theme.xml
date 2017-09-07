@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+        <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="app_theme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+       <style name="app_skin_orange" parent="app_theme">
+         <item name="titlebar_backgroud">@drawable/ui_title_bg_orange</item>
+         <item name="titlebar_left_backgroud">@drawable/ui_titlebar_bg_selector_orange</item>
+         <item name="titlebar_right_backgroud">@drawable/ui_titlebar_bg_selector_orange</item>
+         
+         <item name="version_logo_bg">@drawable/logo_code_orange</item>
+         <item name="large_button">@style/casemanage_button_orange</item>
+    </style>
+    
+    <style name="app_skin_black" parent="app_theme">
+         <item name="titlebar_backgroud">@drawable/ui_title_bg</item>
+         <item name="titlebar_left_backgroud">@drawable/ui_titlebar_bg_selector</item>
+         <item name="titlebar_right_backgroud">@drawable/ui_titlebar_bg_selector</item>
+         
+          <item name="version_logo_bg">@drawable/logo_code</item>
+          <item name="large_button">@style/casemanage_button</item>
+    </style>
+    
+    <style name="app_skin_default" parent="app_skin_orange"></style>
+    
+ 
+</resources>

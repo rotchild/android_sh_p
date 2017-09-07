@@ -25,11 +25,15 @@ public class HttpParams {
     /**获取用户名*/
     public static String GETUSERNAME="";
 
-    /** 用户检测 */
-    public static String USERCHECK = "";
+    /** 用户登录 */
+    public static String USERLOGIN = "";
 
     /** 获取任务列表 */
     public static String GETTASKLIST = "";
+
+    /** 创建案件 */
+    public static String CREATETASK = "";
+
     /**请求视频通信*/
     public static String CALLFORVIDEO="";
 
@@ -39,8 +43,9 @@ public class HttpParams {
         if(!preferencesIP.equals("")){
             BASEURL=preferencesIP;
         }
-        USERCHECK=BASEURL+ctx.getString(R.string.USERCHECK);
         GETUSERNAME=BASEURL+ctx.getString(R.string.GETUSERNAME);
+        USERLOGIN=BASEURL+ctx.getString(R.string.USERLOGIN);
+        CREATETASK=BASEURL+ctx.getString(R.string.CREATETASK);
         GETTASKLIST=BASEURL+ctx.getString(R.string.GETTASKLIST);
         CALLFORVIDEO=BASEURL+ctx.getString(R.string.GETTASKLIST);
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/camera_photo_preview_LinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/camera_preview_TitleBar"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="top"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/camera_photo_preview_backbtn_linear"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp" >
+
+            <ImageView
+                android:id="@+id/camera_photo_preview_backbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:duplicateParentState="true"
+                android:background="@drawable/camera_btn_camera_photo_preview_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/camera_photo_preview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/camera_photo_preview_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/camera_btn_camera_photo_preview_delete" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/camera_photo_preview_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:textSize="25sp" />
+
+</FrameLayout>

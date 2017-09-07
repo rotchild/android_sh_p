@@ -53,50 +53,70 @@ public class DataHandler {
 
     /**
      * 用户登录
-     * @param UserName
+     * @param deviceNo
      * @param Password
-     * @param IMEI
      * @param responseHandler
      */
-    public void userCheck(String UserName,String Password,String IMEI,HttpResponseHandler responseHandler){
+    public void userLogin(String deviceNo,String Password,HttpResponseHandler responseHandler){
         mResponseHandler=responseHandler;
         if(mIsShowProgressDialog) mProgressDialog.show();
-        String url=HttpParams.USERCHECK;
+        String url=HttpParams.USERLOGIN;
         RequestParams params=new RequestParams();
-        params.put("UserName",UserName);
-        params.put("PassWord",Password);
-        params.put("IMEI",IMEI);
+        params.put("device_no",deviceNo);
+        params.put("password",Password);
         mAsyncHttpClient.post(url,params,response);
-
     }
 
     /**
      * 获取设备用户名
-     * @param IMEI
+     * @param deviceNo
      * @param responseHandler
      */
-    public void getUserName(String IMEI,HttpResponseHandler responseHandler){
+    public void getUserName(String deviceNo,HttpResponseHandler responseHandler){
         mResponseHandler=responseHandler;
         if(mIsShowProgressDialog) mProgressDialog.show();
         String url=HttpParams.GETUSERNAME;
         RequestParams params=new RequestParams();
-        params.put("IMEI",IMEI);
+        params.put("device_no",deviceNo);
         mAsyncHttpClient.post(url,params,response);
     }
 
-    /**
-     * 获取任务列表
-     * @param UserName
-     * @param responseHandler
-     */
-    public void getTaskList(String UserName,HttpResponseHandler responseHandler){
+
+    public void getCurrentTaskList(String stationId,String taskNo,String carNo,String keyword,
+                                   String startDate,String endDate,String status,HttpResponseHandler responseHandler){
         Log.e("datahandler","getTaskList enter");
         mResponseHandler=responseHandler;
         if(mIsShowProgressDialog) mProgressDialog.show();
 
         String url=HttpParams.GETTASKLIST;
         RequestParams params=new RequestParams();
-        params.put("UserName", UserName);
+        params.put("station_id", stationId);
+        params.put("task_no", taskNo);
+        params.put("license_no", carNo);
+        params.put("keyword", keyword);
+        params.put("startdate", startDate);
+        params.put("enddate", endDate);
+        params.put("status", status);
+        mAsyncHttpClient.post(url,params,response);
+    }
+
+    /**
+     * 创建任务
+     * @param deviceNo 设备号
+     * @param taskNo 案件号
+     * @param carNo 车牌号
+     * @param responseHandler
+     */
+    public void createTask(String deviceNo,String taskNo,String carNo,HttpResponseHandler responseHandler){
+        Log.e("datahandler","createTask enter");
+        mResponseHandler=responseHandler;
+        if(mIsShowProgressDialog) mProgressDialog.show();
+
+        String url=HttpParams.CREATETASK;
+        RequestParams params=new RequestParams();
+        params.put("device_no",deviceNo);
+        params.put("task_no",taskNo);
+        params.put("license_no",carNo);
         mAsyncHttpClient.post(url,params,response);
     }
 

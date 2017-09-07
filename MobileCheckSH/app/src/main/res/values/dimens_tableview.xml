@@ -1,0 +1,6 @@
+<resources>
+
+     <dimen name="tableview_default_size">16dip</dimen>
+     <dimen name="tableview_createcase_edit_size">14dip</dimen>
+
+</resources>

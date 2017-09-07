@@ -7,7 +7,7 @@ import android.view.Window;
 import cx.mobilechecksh.R;
 import cx.mobilechecksh.utils.AppManager;
 
-public class BaseActivity extends Activity {
+public class MBaseActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

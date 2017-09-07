@@ -1,8 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="base_url">http://192.168.1.14:3031/</string>
+    <string name="base_url1">http://192.168.1.14:3031/</string>
     <string name="GETUSERNAME">api/Public/LoginCheck</string>
-    <string name="USERCHECK">MobileCheckService/UserCheck</string>
+    <string name="USERLOGIN">api/Public/UserLogin</string>
+    <string name="CREATETASK">api/Public/CreateTask</string>
     <string name="GETTASKLIST">MobileCheckService/UserCheck</string>
     <string name="CALLFORVIDEO">MobileCheckService/UserCheck</string>
+
+
+
+    <!-- 编码格式 -->
+    <string name="http_charset">UTF-8</string>
+    <!-- 超时时间 :ms -->
+    <integer name="http_time_out">15000</integer>
+
+    <string name="base_url">http://192.168.1.17:3031/</string>
+
+    <string name="url_UserCheck">MobileCheckService/UserCheck</string>
+    <string name="url_GetTaskList">MobileCheckService/GetTaskList</string>
+    <string name="url_CreateTask">MobileCheckService/CreateTask</string>
+    <string name="url_UpdateTask">MobileCheckService/UpdateTask</string>
+    <string name="url_ReplyTask">MobileCheckService/ReplyTask</string>
+    <string name="url_UploadFiles">MobileCheckService/UploadFiles</string>
+    <string name="url_GetCarTypeList">MobileCheckService/GetCarTypeList</string>
+    <string name="url_GetGarageList">MobileCheckService/GetGarageList</string>
+    <string name="url_GetUserList">MobileCheckService/GetUserList</string>
+    <string name="url_ReportTask">MobileCheckService/ReportTask</string>
+    <string name="url_BindPushUser">MobileCheckService/BindPushUser</string>
+    <string name="url_GetPictures">MobileCheckService/GetPictures</string>
+    <string name="url_GetVersion">rbwebconfig/api2/GetVersionInfo</string>
+    <string name="url_GetGarageInfo">MobileCheckService/GetGarageInfo</string>
+    <string name="url_GetAreaList">MobileCheckService/GetAreaList</string>
+    <string name="url_QueryTasks">MobileCheckService/QueryTasks</string>
+    <string name="url_SendLocationLog">MobileCheckService/SendLocationLog</string>
+    <string name="url_UnBindPushUser">MobileCheckService/UnBindPushUser</string>
+    <string name="url_GetInsuranceList">MobileCheckService/GetInsuranceList</string>
+    <string name="url_GetDicts">MobileCheckService/GetDicts</string>
+    <string name="url_GetRoleDicts">MobileCheckService/GetRoleDicts</string>
+    <string name="url_ChangePassWord">MobileCheckService/ChangePassword</string>
+
+    <!-- <string name="url_GetPictures">Pics</string>  -->
+
+    <string name="true_url">http://192.168.1.49:3000/</string>
+    <string name="request_loading">正在请求网络...</string>
+    <string name="request_erroe_connect">网络连接错误</string>
+    <string name="project_name">MobileCheck</string>
+    <string name="picc_url_port">3000</string>
+    <string name="picc_url1">http://192.168.1.49:3000/</string>
+    <string name="picc_url">http://192.168.1.49:3000/</string>
+    <string name="picc_test_url">http://192.168.1.170:3000/</string>
+
+    <string name="BaiduMobAd_STAT_ID_chenjun864">b7dfdf966d</string>
+
+    <!-- 发送错误日志的时间 -->
+    <string name="senderror_date">09:31:00</string>
 </resources>

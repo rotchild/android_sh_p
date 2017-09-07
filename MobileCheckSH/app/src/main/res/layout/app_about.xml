@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <cx.mobilechecksh.mvideo.picc.ui.Titlebar
+        xmlns:custom="http://schemas.android.com/apk/res/cx.mobilechecksh"
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        custom:titlebarBackground="?attr/titlebar_backgroud"
+        custom:titlebarLeftBackground="?attr/titlebar_left_backgroud"
+        custom:titlebarRightBackground="?attr/titlebar_right_backgroud"
+        custom:titlebarTitle="@string/about_page" />
+
+        <RelativeLayout
+            android:layout_below="@+id/titlebar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/about_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dip"
+                android:src="?attr/version_logo_bg" />
+
+            <TextView
+                android:id="@+id/about_system_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_logo"
+                android:layout_centerHorizontal="true"
+                android:text="@string/about_system_text"
+                android:textColor="@color/gray"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/about_system_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_system_text"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/gray"
+                android:textSize="18sp" />
+
+
+            <Button
+                android:id="@+id/about_app_checkversion"
+                style="?attr/large_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/about_system_text2"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="10dip" />
+            
+               <TextView
+                android:id="@+id/about_system_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/about_version_owner"
+                android:layout_marginBottom="5dip"
+                android:layout_centerHorizontal="true"
+                android:text="@string/about_system_partner"
+                android:textColor="@color/gray"
+                android:textSize="13dip" />
+            
+             <ImageView
+                 android:layout_alignParentBottom="true"
+                android:id="@+id/about_version_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/about_version_owner" />
+            
+        </RelativeLayout>
+
+</RelativeLayout>

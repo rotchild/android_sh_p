@@ -7,4 +7,8 @@
     <color name="block_solid">#909090</color>
     <color name="defaulttext_black">#909090</color>
     <color name="selecttext_red">#FF4081</color>
+    <color name="defalut_edit_normal">#d4d4d4</color>
+    <color name="defalut_edit_pressed">#ffbf6c</color>
+    <color name="gray">#808080</color>
+    <color name="green">#008000</color>
 </resources>

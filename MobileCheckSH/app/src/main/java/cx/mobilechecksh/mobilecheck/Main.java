@@ -2,14 +2,14 @@ package cx.mobilechecksh.mobilecheck;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -27,14 +27,16 @@ import cx.mobilechecksh.adapters.MainPageAdapter;
 import cx.mobilechecksh.data.DBModle;
 import cx.mobilechecksh.data.DataHandler;
 import cx.mobilechecksh.global.G;
+import cx.mobilechecksh.mvideo.camera.CameraMain;
 import cx.mobilechecksh.net.HttpResponseHandler;
-import cx.mobilechecksh.theme.BaseActivity;
+import cx.mobilechecksh.theme.MBaseActivity;
 import cx.mobilechecksh.ui.Dialog_NewTask;
 import cx.mobilechecksh.ui.PullDownListView;
+import cx.mobilechecksh.utils.MRegex;
 import cx.mobilechecksh.utils.MToast;
 import cx.mobilechecksh.utils.UserManager;
 
-public class Main extends BaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner
+public class Main extends MBaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner
 {
     Context mContext;
     private View mCurLayout,mHisLayout,mAddress,mMessage;
@@ -90,6 +92,9 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
     private PullDownListView mCurPullLV,mHisPullLV,mAddressPullLV,mMessagePullLV;
     private ListView mCurLV,mHisLV,mAddressLV,mMessageLV;
 
+    //摄像
+    Button callVideo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.e("main","onCreate enter");
@@ -107,6 +112,15 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
     }
 
     private void initView() {
+        callVideo=(Button)findViewById(R.id.toVideo);
+        callVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toVideo=new Intent(mContext, CameraMain.class);
+                startActivity(toVideo);
+            }
+        });
+
         mViewPager=(ViewPager)findViewById(R.id.mViewPager);
         //底部组件
         cur_task_img=(ImageView)findViewById(R.id.cur_task_img);
@@ -276,8 +290,18 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
     public void getData() {
         Log.e("main","getData enter");
         mDataHandler.setmIsShowProgressDialog(false);
+/*        String stationId,String taskNo,String carNo,String keyword,
+                String startDate,String endDate,String status*/
+        String stationId=UserManager.getInstance().getStationId();
+        String taskNo="";
+        String carNo="";
+        String keyword="";
+        String startDate="";
+        String endDate="";
+        String status="";
 
-        mDataHandler.getTaskList(mUserName, currentHttpResponseHandler);
+        mDataHandler.getCurrentTaskList(stationId,taskNo,carNo,keyword,startDate,
+                endDate,status,currentHttpResponseHandler);
     }
 
     HttpResponseHandler currentHttpResponseHandler=new HttpResponseHandler(){
@@ -290,7 +314,7 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     //根据返回数据调整
-                    mAllData_JsonArray=jsonObject.getJSONArray("task_list");
+                    mAllData_JsonArray=jsonObject.getJSONArray("data");
                     JSONObject object;
                     ContentValues values;
                     for(int i=0;i<mAllData_JsonArray.length();i++){
@@ -298,6 +322,13 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
                         object= (JSONObject) mAllData_JsonArray.get(i);
                         values.put(DBModle.Task.CaseNo,object.getString(DBModle.Task.CaseNo));
                         values.put(DBModle.Task.CarMark,object.getString(DBModle.Task.CarMark));
+                        values.put(DBModle.Task.CaseState,object.getString(DBModle.Task.CaseState));
+                        values.put(DBModle.Task.CreateTime,object.getString(DBModle.Task.CreateTime));
+                        values.put(DBModle.Task.CaseState,object.getString(DBModle.Task.CaseState));
+                        values.put(DBModle.Task.DSName,object.getString(DBModle.Task.DSName));
+                        values.put(DBModle.Task.USName,object.getString(DBModle.Task.USName));
+                        values.put(DBModle.Task.DSMobile,object.getString(DBModle.Task.DSMobile));
+
                         mArrayList_data.add(values);
                     }
                 } catch (JSONException e) {
@@ -313,21 +344,22 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
                 ContentValues values=new ContentValues();
                 values.put(DBModle.Task.CaseNo,"PDZA0000000000010002");
                 values.put(DBModle.Task.CarMark,"沪A33000");
-                values.put(DBModle.Task.AddTime,"2017-7-18 12:24:36");
-                values.put(DBModle.Task.CarType,"一汽大众");
+                values.put(DBModle.Task.CreateTime,"2017-7-18 12:24:36");
+                //values.put(DBModle.Task.CarType,"一汽大众");
                 values.put(DBModle.Task.CaseState,"待定损");
                 mArrayList_data.add(values);
 
                 ContentValues values1=new ContentValues();
                 values1.put(DBModle.Task.CaseNo,"PDZA0000000000010320");
                 values1.put(DBModle.Task.CarMark,"沪A68520");
-                values1.put(DBModle.Task.AddTime,"2017-7-25 10:22:36");
+                values1.put(DBModle.Task.CreateTime,"2017-7-25 10:22:36");
                 values1.put(DBModle.Task.CaseState,"定损中");
-                values1.put(DBModle.Task.Dingsuner,"李强");
+                values1.put(DBModle.Task.DSName,"李强");
                 mArrayList_data.add(values1);
 
             }
-            splitData(mArrayList_data,allTask_data);
+            //splitData(mArrayList_data,allTask_data);
+            mSplitData(mArrayList_data);
         }
     };
 
@@ -389,6 +421,11 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
         setCurrentTaskLayout(mCurLV,mArrayList_data);
     }
 
+
+    public void mSplitData(ArrayList<ContentValues> serviceData){
+
+    }
+
     /**
      * 适配各种数据
      * @param listView
@@ -406,11 +443,63 @@ public class Main extends BaseActivity implements ViewPager.OnPageChangeListener
         newTaskDg.setOnPositiveListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MToast.toast(mContext,"you click");
+                String caseNo=newTaskDg.getCaseNo();
+                String carNo=newTaskDg.getCarNo();
+
+                createTask(caseNo,carNo);
+
+                if(newTaskDg!=null&&newTaskDg.isShowing()){
+                    newTaskDg.dismiss();
+                }
+
             }
         });
         newTaskDg.show();
     }
+
+    /**
+     * 创建案件
+     * @param caseNo 案件号
+     * @param carNo 车牌号
+     */
+    public void createTask(String caseNo,String carNo){
+        if(!MRegex.isRightCaseNO(caseNo)){
+            G.showToast(mContext,mContext.getResources().getString(R.string.caseno_err),false);
+            return;
+        }
+        if(!MRegex.isRightCarNO(caseNo)){
+            G.showToast(mContext,mContext.getResources().getString(R.string.carno_err),false);
+            return;
+        }
+        DataHandler dataHandler=new DataHandler(mContext);
+        dataHandler.setmIsShowProgressDialog(true);
+        String deviceNo= UserManager.getInstance().getDeviceNo();
+        dataHandler.createTask(deviceNo,caseNo,carNo,createTaskHandler);
+    }
+    HttpResponseHandler createTaskHandler=new HttpResponseHandler(){
+        @Override
+        public void response(boolean success, String response, Throwable error) {
+            //super.response(success, response, error);
+            if(success){
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    boolean dataSuccess=jsonObject.getBoolean("success");
+                    if(dataSuccess){
+                        G.showToast(mContext,"success",false);
+                    }else {
+                    JSONObject err=jsonObject.getJSONObject("err");
+                        String message=err.getString("message");
+                        G.showToast(mContext,message,false);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    G.showToast(mContext,mContext.getResources().getString(R.string.response_exception),false);
+                }
+            }else {
+                G.showToast(mContext,mContext.getResources().getString(R.string.response_false),false);
+            }
+        }
+    };
 
     /**
      * 请求视屏通信

@@ -52,6 +52,7 @@
                 android:scrollHorizontally="true"
                 android:hint="请输入帐号"
                 android:background="@null"
+                android:editable="false"
                 />
             <ImageView
                 android:layout_width="35dp"

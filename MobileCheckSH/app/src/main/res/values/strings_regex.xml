@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="caseno_err">案件号填写错误</string>
+    <string name="carno_err">车牌号填写错误</string>
+</resources>

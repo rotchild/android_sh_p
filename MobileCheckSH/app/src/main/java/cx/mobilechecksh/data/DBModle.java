@@ -7,20 +7,23 @@ package cx.mobilechecksh.data;
 public class DBModle {
 public final static class Task{
     /**案件号 */
-    public final static String CaseNo = "CaseNo";
+    public final static String CaseNo = "task_no";
     /**车牌号 */
-    public final static String CarMark = "CarMark";
+    public final static String CarMark = "license_no";
     /** 1:新案件，0：不是新案件*/
     public final static String IsNew = "IsNew";
-    /** 案件状态: 待定损 定损中*/
-    public final static String TaskState="TaskState";
     /** 提交时间*/
-    public final static String AddTime="AddTime";
+    public final static String CreateTime="create_date";
     /**车型*/
-    public final static String CarType="CarType";
-    /**任务状态*/
-    public final static String CaseState="CaseState";
-    /**定损员*/
-    public final static String Dingsuner="Dingsuner";
+   // public final static String CarType="CarType";
+    /**任务状态 0待定损 1定损中 2已挂起 3已完成*/
+    public final static String CaseState="status";
+    /**定损员姓名*/
+    public final static String DSName="ds_user_realname";
+    /**用户名*/
+    public final static String USName="username";
+    /**定损员电话*/
+    public final static String DSMobile="ds_user_mobile";
+
 }
 }

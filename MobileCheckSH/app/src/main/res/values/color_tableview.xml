@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="tableview_edit_white">#FFFFFF</color>
+    <color name="tableview_defalut_edit_normal">#d4d4d4</color>
+    <color name="tableview_rounded_container_border">#ffb7babb</color>
+     <color name="tableview_text_color_default">#000000</color>
+    <color name="tableview_text_color_pressed">#ffffff</color>
+    
+</resources>

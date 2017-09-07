@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/camera"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/camera_camera_background"
+    android:orientation="horizontal"
+    tools:context="cx.mobilechecksh.mvideo.camera.CameraMain" >
+
+    <cx.mobilechecksh.mvideo.camera.ui.PreviewFrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <SurfaceView
+                android:id="@+id/camera_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <cx.mobilechecksh.mvideo.camera.ui.FocusRectangle
+                android:id="@+id/focus_rectangle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </cx.mobilechecksh.mvideo.camera.ui.PreviewFrameLayout>
+
+</FrameLayout>

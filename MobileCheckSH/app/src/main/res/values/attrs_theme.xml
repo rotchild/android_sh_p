@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+     <attr name="titlebar_backgroud" format="reference"/>
+     <attr name="titlebar_left_backgroud" format="reference"/>
+     <attr name="titlebar_right_backgroud" format="reference"/>
+     
+     <attr name="large_button" format="reference"/>
+     
+     <attr name="version_logo_bg" format="reference"/>
+</resources>

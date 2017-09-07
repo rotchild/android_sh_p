@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_control_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_gravity="left"
+    android:orientation="vertical" >
+    
+    
+      <cx.mobilechecksh.mvideo.camera.ui.RotateImageView
+        android:id="@+id/camera_wifi"
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/camera_btn_title_bg"
+        android:src="@drawable/wifi" />
+	<!-- 
+        <com.whhcxw.camera.ui.RotateImageView
+        android:id="@+id/camera_sence"
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/camera_btn_title_bg"
+        android:src="@drawable/sence" /> -->
+     
+    <cx.mobilechecksh.mvideo.camera.ui.RotateImageView
+        android:id="@+id/camera_b2f_switch"
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/camera_btn_title_bg"
+        android:src="@drawable/camera_ic_top_switcher" />
+
+    <cx.mobilechecksh.mvideo.camera.ui.RotateImageView
+        android:id="@+id/camera_focus_switch"
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/camera_btn_title_bg"
+        android:src="@drawable/camera_button_focus_auto" />
+
+
+  	 <cx.mobilechecksh.mvideo.camera.ui.RotateImageView
+        android:id="@+id/camera_setting"
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/camera_btn_title_bg"
+        android:src="@drawable/camera_btn_ic_iv_setting_normal" />
+
+</LinearLayout>

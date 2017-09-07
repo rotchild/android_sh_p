@@ -41,6 +41,22 @@ public class UserManager {
     }
 
     /**
+     * 获取设备号
+     * @return
+     */
+    public String getDeviceNo(){
+        return mSP.getString("DeviceNo","");
+    }
+
+    /**
+     * 获取用户id
+     * @return
+     */
+    public String getStationId(){
+        return mSP.getString("StationId","");
+    }
+
+    /**
      * 获取用户登录状态
      * @return
      */
@@ -48,9 +64,41 @@ public class UserManager {
         return mSP.getBoolean("isLogin",false);
     }
 
-    public boolean saveUserInfo(Context ctx,String UserName){
-        SharedPreferences.Editor editor=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE).edit();
+    /**
+     * when welcome act
+     * @param ctx
+     * @param UserName
+     * @param DeviceNo
+     * @return
+     */
+    public boolean saveUserInfo(Context ctx,String UserName,String DeviceNo){
+        SharedPreferences sp=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE);
+        //SharedPreferences.Editor editor=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor=sp.edit();
         editor.putString("UserName",UserName);
+        editor.putString("DeviceNo",DeviceNo);
+        boolean saveSucc=editor.commit();
+        if(saveSucc==false){
+            Log.e(TAG,"saveUserInfo error  context:");
+        }
+        return saveSucc;
+    }
+
+    /**
+     * when login act
+     * @param ctx
+     * @param UserName
+     * @param DeviceNo
+     * @param stationId
+     * @return
+     */
+    public boolean saveUserInfo(Context ctx,String UserName,String DeviceNo,String stationId){
+        SharedPreferences sp=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE);
+        //SharedPreferences.Editor editor=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor=sp.edit();
+        editor.putString("UserName",UserName);
+        editor.putString("DeviceNo",DeviceNo);
+        editor.putString("StationId",stationId);
         boolean saveSucc=editor.commit();
         if(saveSucc==false){
             Log.e(TAG,"saveUserInfo error  context:");

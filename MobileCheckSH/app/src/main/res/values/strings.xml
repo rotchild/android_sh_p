@@ -30,5 +30,43 @@
     <string name="caseNo">报案号</string>
     <string name="carNo">车牌号</string>
 
+    <string name="about_system_text">手机查勘Android客户端</string>
+    <string name="about_system_current_code">当前版本号:</string>
+    <string name="about_system_laster_code">已是最新版本</string>
+    <string name="about_system_upgrade">升　　级</string>
+    <string name="about_system_weberror">没有检测到更新版本</string>
+    <string name="about_system_partner">中国电信股份有限公司武汉分公司  合作伙伴</string>
+
+
+    <string name="dialog_title">温馨提示</string>
+    <string name="dialog_positive">确定</string>
+    <string name="dialog_negative">取消</string>
+    <string name="catchexception_title">错误日志</string>
+    <string name="login_neterror">网络连接错误</string>
+    <string name="setting_save">保存</string>
+    <string name="setting_page">设置</string>
+    <string name="about_page">关于</string>
+    <!-- SETTING -->
+    <string name="settingip_ip">IP设置:</string>
+    <string name="settingip_sign">用户名:</string>
+    <string name="settingip_save">保存</string>
+    <string name="settingip_nomes">不能为空</string>
+    <string name="settingip_error">ip地址格式错误</string>
+    <string name="settingip_pwph">幅　面:　</string>
+    <string name="settingip_FPS">帧　率:　</string>
+    <string name="settingip_BIT">码　率:　</string>
+    <string name="settingip_connect_type">协　议:　</string>
+    <string name="setting_defaultFPS">30</string>
+    <string name="setting_defaultBIT">800</string>
+    <string name="setting_defaultPW_PH">1280*720</string>
+    <string name="setting_ip_format">(例IP地址格式为:192.168.1.119)</string>
+
+
+    <string name="fix_net">网络设置</string>
+    <string name="ip_set_text">恢复初始化设置</string>
+    <string name="ssid_text">SSID</string>
+    <string name="ip_text">IP地址</string>
+    <string name="gateway_text">掩码</string>
+    <string name="netmask_text">网关</string>
 
 </resources>

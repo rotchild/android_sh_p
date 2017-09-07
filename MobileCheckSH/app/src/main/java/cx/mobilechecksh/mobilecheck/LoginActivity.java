@@ -8,32 +8,40 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cx.mobilechecksh.R;
+import cx.mobilechecksh.data.DataHandler;
 import cx.mobilechecksh.global.G;
 import cx.mobilechecksh.net.HttpResponseHandler;
-import cx.mobilechecksh.theme.BaseActivity;
+import cx.mobilechecksh.theme.MBaseActivity;
 import cx.mobilechecksh.ui.MDialog;
+import cx.mobilechecksh.utils.MD5;
 import cx.mobilechecksh.utils.UserManager;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends MBaseActivity {
     /**
-     * 用户名
+     * 用户登录信息
      */
     private String mUserName;
-    private String md5Pass;
+    private String deviceNo;
+    private String stationId;
 
     private EditText name_et;
     private EditText pass_et;
 
     private Context mContext;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mContext=this;
-        init();
         findViews();
+        init();
+
     }
 
     private void findViews() {
@@ -44,6 +52,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void init() {
+       mUserName=UserManager.getInstance().getUserName();
+        name_et.setText(mUserName);
 
     }
 
@@ -56,38 +66,58 @@ public class LoginActivity extends BaseActivity {
 
 
             mUserName=name_et.getText().toString();
-            String userPass=pass_et.getText().toString();
-            if(mUserName.equals("")|| userPass.equals("")) {
+            String password=pass_et.getText().toString();
+            if(mUserName.equals("")|| password.equals("")) {
                 MDialog.negativeDialog(mContext, mContext.getResources().getString(R.string.login_mess));
             }else{
-//                MD5 md5=new MD5();
-//                md5Pass=md5.toMd5(userPass);
-//
-//                DataHandler dataHandler=new DataHandler(mContext);
-//                dataHandler.setmIsShowProgressDialog(true);
-//                dataHandler.userCheck(mUserName,md5Pass,"",mUserCheckResponse);
-
-                Intent toMain=new Intent(LoginActivity.this,Main.class);
-                startActivity(toMain);
+ /*               Intent toMain=new Intent(LoginActivity.this,Main.class);
+                startActivity(toMain);*/
+                deviceNo=UserManager.getInstance().getDeviceNo();
+                login(deviceNo,password);
             }
 
             }
 
         };
 
-    HttpResponseHandler mUserCheckResponse=new HttpResponseHandler(){
+    /**
+     * 登录请求
+     * @param deviceNo 设备号：IMEI
+     * @param password 未加密密码
+     */
+        public void login(String deviceNo,String password){
+            String pwMd5= new MD5().toMd5(password);
+            DataHandler dataHandler=new DataHandler(mContext);
+            dataHandler.setmIsShowProgressDialog(true);
+            dataHandler.userLogin(deviceNo,pwMd5,mUserLoginResponse);
+        }
+    HttpResponseHandler mUserLoginResponse=new HttpResponseHandler(){
         @Override
         public void response(boolean success, String response, Throwable error) {
-            if(success){
+            if(success){//连接success
                 try{
-                    //保存登录信息
-                    UserManager.getInstance().saveUserInfo(mContext,mUserName);
+                    JSONObject jsonObject=new JSONObject(response);
+                    boolean dataSuccess=jsonObject.getBoolean("success");
+                    if(dataSuccess){
+                        JSONObject data=jsonObject.getJSONObject("data");
+                        mUserName=data.getString("station_name");
+                        deviceNo=data.getString("device_no");
+                        //保存登录信息
+                        UserManager.getInstance().saveUserInfo(mContext,mUserName,deviceNo,stationId);
+                        Intent toMain=new Intent(LoginActivity.this,Main.class);
+                        startActivity(toMain);
+                    }else{
+                        JSONObject err=jsonObject.getJSONObject("err");
+                        String message=err.getString("message");
+                        G.showToast(mContext, message, false);
+                    }
+
                 }catch(Exception e){
-                e.printStackTrace();
-                    G.showToast(mContext, mContext.getResources().getString(R.string.login_error), true);
+                    e.printStackTrace();
+                    G.showToast(mContext, mContext.getResources().getString(R.string.response_exception), false);
                 }
             }else{
-                G.showToast(mContext, mContext.getResources().getString(R.string.login_error), true);
+                G.showToast(mContext, mContext.getResources().getString(R.string.response_false), false);
             }
         }
     };

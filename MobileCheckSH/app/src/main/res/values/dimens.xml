@@ -12,4 +12,6 @@
     <dimen name="updatebar_height">62.0dip</dimen>
     <dimen name="default_padding">5.0dip</dimen>
     <dimen name="btnw_small">40dp</dimen>
+
+    <dimen name="default_edittext_height">40dip</dimen>
 </resources>

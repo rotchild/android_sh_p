@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_gravity="right"
+    android:orientation="vertical" 
+    android:id="@+id/camera_zoom_layout">
+    
+    <RelativeLayout 
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+        <!-- 
+        <TextView 
+           android:layout_toLeftOf="@+id/camera_zoom_seekbar"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:text="+"/>
+        <TextView 
+            android:layout_toLeftOf="@+id/camera_zoom_seekbar"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:text="-"/>
+        
+         -->
+        
+        <cx.mobilechecksh.mvideo.camera.ui.VerticalSeekBar
+	    android:id="@+id/camera_zoom_seekbar"
+	    android:layout_width="wrap_content"
+	    android:layout_height="fill_parent"
+	    android:layout_margin="30dp"
+	    android:layout_marginRight="20dp"
+	    android:max="10"
+	    android:layout_alignParentRight="true"
+	    >
+	</cx.mobilechecksh.mvideo.camera.ui.VerticalSeekBar>
+    </RelativeLayout>
+	
+
+</LinearLayout>
