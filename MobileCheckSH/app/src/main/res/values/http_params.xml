@@ -4,7 +4,7 @@
     <string name="GETUSERNAME">api/Public/LoginCheck</string>
     <string name="USERLOGIN">api/Public/UserLogin</string>
     <string name="CREATETASK">api/Public/CreateTask</string>
-    <string name="GETTASKLIST">MobileCheckService/UserCheck</string>
+    <string name="GETTASKLIST">api/Public/GetCurrentTask</string>
     <string name="CALLFORVIDEO">MobileCheckService/UserCheck</string>
 
 

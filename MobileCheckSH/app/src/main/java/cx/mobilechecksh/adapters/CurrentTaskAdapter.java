@@ -72,8 +72,8 @@ public class CurrentTaskAdapter extends BaseAdapter {
                     holder_wait=new ViewHolder_wait();
                     holder_wait.caseNo=(TextView)convertView.findViewById(R.id.caseno_val);
                     holder_wait.carNo= (TextView) convertView.findViewById(R.id.carno_val);
-                    holder_wait.addTime=(TextView)convertView.findViewById(R.id.addtime_val);
-                    holder_wait.carType=(TextView)convertView.findViewById(R.id.cartype_val);
+                    holder_wait.createTime=(TextView)convertView.findViewById(R.id.addtime_val);
+                    //holder_wait.carType=(TextView)convertView.findViewById(R.id.cartype_val);
                     holder_wait.caseState=(TextView)convertView.findViewById(R.id.casestate_val);
 
                     holder_wait.deleteLayout=(RelativeLayout)convertView.findViewById(R.id.delete_layout);
@@ -85,8 +85,8 @@ public class CurrentTaskAdapter extends BaseAdapter {
                     holder_deal=new ViewHolder_deal();
                     holder_deal.caseNo=(TextView)convertView.findViewById(R.id.caseno_val_d);
                     holder_deal.carNo=(TextView)convertView.findViewById(R.id.carno_val_d);
-                    holder_deal.addTime=(TextView)convertView.findViewById(R.id.addtime_val_d);
-                    holder_deal.carType=(TextView)convertView.findViewById(R.id.carno_val_d);
+                    holder_deal.createTime=(TextView)convertView.findViewById(R.id.addtime_val_d);
+                   // holder_deal.carType=(TextView)convertView.findViewById(R.id.carno_val_d);
                     holder_deal.caseState=(TextView)convertView.findViewById(R.id.casestate_val_d);
                     holder_deal.dinsuner=(TextView)convertView.findViewById(R.id.dinsuner_val);
 
@@ -113,16 +113,16 @@ public class CurrentTaskAdapter extends BaseAdapter {
         switch (type){
             case TYPE_WAIT:
                 holder_wait.caseNo.setText(mData.get(position).getAsString(DBModle.Task.CaseNo));
-                holder_wait.addTime.setText(mData.get(position).getAsString(DBModle.Task.AddTime));
+                holder_wait.createTime.setText(mData.get(position).getAsString(DBModle.Task.CreateTime));
                 holder_wait.carNo.setText(mData.get(position).getAsString(DBModle.Task.CarMark));
-                holder_wait.carType.setText(mData.get(position).getAsString(DBModle.Task.CarType));
+               // holder_wait.carType.setText(mData.get(position).getAsString(DBModle.Task.CarType));
                 holder_wait.caseState.setText(mData.get(position).getAsString(DBModle.Task.CaseState));
                 break;
             case TYPE_DEAL:
                 holder_deal.caseNo.setText(mData.get(position).getAsString(DBModle.Task.CaseNo));
-                holder_deal.addTime.setText(mData.get(position).getAsString(DBModle.Task.AddTime));
+                holder_deal.createTime.setText(mData.get(position).getAsString(DBModle.Task.CreateTime));
                 holder_deal.carNo.setText(mData.get(position).getAsString(DBModle.Task.CarMark));
-                holder_deal.carType.setText(mData.get(position).getAsString(DBModle.Task.CarType));
+                //holder_deal.carType.setText(mData.get(position).getAsString(DBModle.Task.CarType));
                 holder_deal.caseState.setText(mData.get(position).getAsString(DBModle.Task.CaseState));
                 holder_deal.dinsuner.setText(mData.get(position).getAsString(DBModle.Task.CaseState));
                 break;
@@ -139,7 +139,7 @@ public class CurrentTaskAdapter extends BaseAdapter {
      */
     @Override
     public int getItemViewType(int position) {
-        if(mData.get(position).getAsString(DBModle.Task.TaskState).equals("待定损")){
+        if(mData.get(position).getAsString(DBModle.Task.CaseState).equals("0")){
             return TYPE_WAIT;
         }else{
             return TYPE_DEAL;
@@ -181,12 +181,14 @@ public class CurrentTaskAdapter extends BaseAdapter {
     }
 
     public class ViewHolder_wait{
-        TextView caseNo,addTime,carNo,carType,caseState;
+        //TextView caseNo,createTime,carNo,carType,caseState;
+        TextView caseNo,createTime,carNo,caseState;
         RelativeLayout deleteLayout;
     }
 
     public class ViewHolder_deal{
-        TextView caseNo,addTime,carNo,carType,caseState,dinsuner;
+        //TextView caseNo,createTime,carNo,carType,caseState,dinsuner;
+        TextView caseNo,createTime,carNo,caseState,dinsuner;
         LinearLayout takephotoLayout,callLayout;
     }
 }

@@ -339,27 +339,9 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
                 G.showToast(mContext, getString(R.string.network_err), true);
             }
             //Log.e("main","before split");
-            if(mArrayList_data.size()<=0){//虚拟数据测试用
-                Log.e("main","mArrayList_data size enter");
-                ContentValues values=new ContentValues();
-                values.put(DBModle.Task.CaseNo,"PDZA0000000000010002");
-                values.put(DBModle.Task.CarMark,"沪A33000");
-                values.put(DBModle.Task.CreateTime,"2017-7-18 12:24:36");
-                //values.put(DBModle.Task.CarType,"一汽大众");
-                values.put(DBModle.Task.CaseState,"待定损");
-                mArrayList_data.add(values);
-
-                ContentValues values1=new ContentValues();
-                values1.put(DBModle.Task.CaseNo,"PDZA0000000000010320");
-                values1.put(DBModle.Task.CarMark,"沪A68520");
-                values1.put(DBModle.Task.CreateTime,"2017-7-25 10:22:36");
-                values1.put(DBModle.Task.CaseState,"定损中");
-                values1.put(DBModle.Task.DSName,"李强");
-                mArrayList_data.add(values1);
-
-            }
             //splitData(mArrayList_data,allTask_data);
-            mSplitData(mArrayList_data);
+            setCurrentTaskLayout(mCurLV,mArrayList_data);
+            mCurPullLV.onRefreshComplete();
         }
     };
 
@@ -421,10 +403,6 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
         setCurrentTaskLayout(mCurLV,mArrayList_data);
     }
 
-
-    public void mSplitData(ArrayList<ContentValues> serviceData){
-
-    }
 
     /**
      * 适配各种数据

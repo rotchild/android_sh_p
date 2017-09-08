@@ -102,6 +102,7 @@ public class LoginActivity extends MBaseActivity {
                         JSONObject data=jsonObject.getJSONObject("data");
                         mUserName=data.getString("station_name");
                         deviceNo=data.getString("device_no");
+                        stationId=data.getString("id");
                         //保存登录信息
                         UserManager.getInstance().saveUserInfo(mContext,mUserName,deviceNo,stationId);
                         Intent toMain=new Intent(LoginActivity.this,Main.class);
