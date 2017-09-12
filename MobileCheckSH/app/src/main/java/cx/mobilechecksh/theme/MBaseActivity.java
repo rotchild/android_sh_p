@@ -1,13 +1,12 @@
 package cx.mobilechecksh.theme;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 
-import cx.mobilechecksh.R;
 import cx.mobilechecksh.utils.AppManager;
 
-public class MBaseActivity extends Activity {
+public class MBaseActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

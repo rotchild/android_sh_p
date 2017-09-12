@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +33,6 @@ import cx.mobilechecksh.theme.MBaseActivity;
 import cx.mobilechecksh.ui.Dialog_NewTask;
 import cx.mobilechecksh.ui.PullDownListView;
 import cx.mobilechecksh.utils.MRegex;
-import cx.mobilechecksh.utils.MToast;
 import cx.mobilechecksh.utils.UserManager;
 
 public class Main extends MBaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner
@@ -172,7 +171,7 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
 
         mAddress=inflater.inflate(R.layout.view_address,null);
         mArrayList.add(mAddress);
-        mAddressPullLV=(PullDownListView)mAddress.findViewById(R.id.address_pulldown_list);
+       // mAddressPullLV=(PullDownListView)mAddress.findViewById(R.id.address_pulldown_list);
 
         mMessage=inflater.inflate(R.layout.view_message,null);
         mArrayList.add(mMessage);
@@ -185,7 +184,7 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
         //listView
         mCurLV=(ListView)mCurLayout.findViewById(R.id.current_task_list);
         mHisLV=(ListView)mHisLayout.findViewById(R.id.his_task_list);
-        mAddressLV=(ListView)mAddress.findViewById(R.id.address_list);
+       // mAddressLV=(ListView)mAddress.findViewById(R.id.address_list);
         mMessageLV=(ListView)mMessage.findViewById(R.id.message_task_list);
     }
 

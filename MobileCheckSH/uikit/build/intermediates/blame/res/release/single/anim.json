@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\snackbar_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\b08d78d42c8ed5f516136d321c5f24690d5f4202\\output\\res\\anim\\snackbar_out.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\fab_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\b08d78d42c8ed5f516136d321c5f24690d5f4202\\output\\res\\anim\\fab_in.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\dfa32eab9e5401885f1d324455945046a319a52e\\output\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\dfa32eab9e5401885f1d324455945046a319a52e\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\design_fab_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\dfa32eab9e5401885f1d324455945046a319a52e\\output\\res\\anim\\design_fab_out.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\design_fab_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\dfa32eab9e5401885f1d324455945046a319a52e\\output\\res\\anim\\design_fab_in.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\snackbar_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\b08d78d42c8ed5f516136d321c5f24690d5f4202\\output\\res\\anim\\snackbar_in.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\fab_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\b08d78d42c8ed5f516136d321c5f24690d5f4202\\output\\res\\anim\\fab_out.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\dfa32eab9e5401885f1d324455945046a319a52e\\output\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\dfa32eab9e5401885f1d324455945046a319a52e\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\res\\merged\\release\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8941d3fb149545055c1ae9af6ecabaf12d8495ef\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    }
+]

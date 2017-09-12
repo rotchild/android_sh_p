@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "E:\\fromgit\\android_sh_p\\MobileCheckSH\\uikit\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-w360dp-v13\\values-w360dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\.android\\build-cache\\bfc6a24bae373d12b9b30b80aec2a775042dac60\\output\\res\\values-w360dp\\values-w360dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 294,
+                        "endColumn": 54,
+                        "endOffset": 344
+                    }
+                }
+            }
+        ]
+    }
+]
