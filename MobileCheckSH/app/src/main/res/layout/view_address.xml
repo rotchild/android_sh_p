@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <fragment
-        android:id="@+id/recent_contacts_fragment"
-        android:name="com.netease.nim.uikit.recent.RecentContactsFragment"
+        android:id="@+id/contact_list_fragment"
+        android:name="com.netease.nim.uikit.contact.ContactsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </fragment>

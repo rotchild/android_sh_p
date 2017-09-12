@@ -175,7 +175,7 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
 
         mMessage=inflater.inflate(R.layout.view_message,null);
         mArrayList.add(mMessage);
-        mMessagePullLV= (PullDownListView) mMessage.findViewById(R.id.message_pulldown_list);
+       // mMessagePullLV= (PullDownListView) mMessage.findViewById(R.id.message_pulldown_list);
 
         MainPageAdapter mPageAdapter=new MainPageAdapter(mArrayList);
         mViewPager.setAdapter(mPageAdapter);
@@ -185,7 +185,7 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
         mCurLV=(ListView)mCurLayout.findViewById(R.id.current_task_list);
         mHisLV=(ListView)mHisLayout.findViewById(R.id.his_task_list);
        // mAddressLV=(ListView)mAddress.findViewById(R.id.address_list);
-        mMessageLV=(ListView)mMessage.findViewById(R.id.message_task_list);
+       // mMessageLV=(ListView)mMessage.findViewById(R.id.message_task_list);
     }
 
     @Override
