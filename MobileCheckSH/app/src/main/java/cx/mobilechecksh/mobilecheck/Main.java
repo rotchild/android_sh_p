@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,7 +28,6 @@ import cx.mobilechecksh.adapters.MainPageAdapter;
 import cx.mobilechecksh.data.DBModle;
 import cx.mobilechecksh.data.DataHandler;
 import cx.mobilechecksh.global.G;
-import cx.mobilechecksh.mvideo.camera.CameraMain;
 import cx.mobilechecksh.net.HttpResponseHandler;
 import cx.mobilechecksh.theme.MBaseActivity;
 import cx.mobilechecksh.ui.Dialog_NewTask;
@@ -35,7 +35,7 @@ import cx.mobilechecksh.ui.PullDownListView;
 import cx.mobilechecksh.utils.MRegex;
 import cx.mobilechecksh.utils.UserManager;
 
-public class Main extends MBaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner
+public class Main extends MBaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner,CurrentTaskAdapter.MCallback
 {
     Context mContext;
     private View mCurLayout,mHisLayout,mAddress,mMessage;
@@ -106,19 +106,21 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
     private void init() {
         mDataHandler=new DataHandler(mContext);
        // mUserName= UserManager.getInstance().getUserName();
+
         initView();
         setPage();
+        getData();
     }
 
     private void initView() {
-        callVideo=(Button)findViewById(R.id.toVideo);
+/*        callVideo=(Button)findViewById(R.id.toVideo);
         callVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent toVideo=new Intent(mContext, CameraMain.class);
                 startActivity(toVideo);
             }
-        });
+        });*/
 
         mViewPager=(ViewPager)findViewById(R.id.mViewPager);
         //底部组件
@@ -285,6 +287,18 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
 
     }
 
+    /**
+     * MCallBack method impl
+     * @param v
+     */
+    @Override
+    public void click(View v) {
+        int clickpostion=(int)v.getTag();
+        ContentValues clickCV= (ContentValues) mCurrentTaskAdapter.getItem(clickpostion);
+        Log.e("main","clickpostion"+clickpostion);
+        startActivity(new Intent(Main.this,WaitingActivity.class));
+    }
+
     /** 获取数据 */
     public void getData() {
         Log.e("main","getData enter");
@@ -319,11 +333,12 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
                     for(int i=0;i<mAllData_JsonArray.length();i++){
                         values=new ContentValues();
                         object= (JSONObject) mAllData_JsonArray.get(i);
+                        values.put(DBModle.Task.CaseId,object.getString(DBModle.Task.CaseId));
                         values.put(DBModle.Task.CaseNo,object.getString(DBModle.Task.CaseNo));
                         values.put(DBModle.Task.CarMark,object.getString(DBModle.Task.CarMark));
                         values.put(DBModle.Task.CaseState,object.getString(DBModle.Task.CaseState));
                         values.put(DBModle.Task.CreateTime,object.getString(DBModle.Task.CreateTime));
-                        values.put(DBModle.Task.CaseState,object.getString(DBModle.Task.CaseState));
+                       // values.put(DBModle.Task.CaseState,object.getString(DBModle.Task.CaseState));
                         values.put(DBModle.Task.DSName,object.getString(DBModle.Task.DSName));
                         values.put(DBModle.Task.USName,object.getString(DBModle.Task.USName));
                         values.put(DBModle.Task.DSMobile,object.getString(DBModle.Task.DSMobile));
@@ -409,8 +424,25 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
      * @param listdata
      */
     public void setCurrentTaskLayout(ListView listView, final ArrayList<ContentValues> listdata){
-        mCurrentTaskAdapter=new CurrentTaskAdapter(mContext,listdata);
+        mCurrentTaskAdapter=new CurrentTaskAdapter(mContext,listdata,this);
         listView.setAdapter(mCurrentTaskAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("Main","position"+position+"id"+id);
+                Intent toWait=new Intent(Main.this,WaitingActivity.class);
+                ContentValues selectTask= (ContentValues) mCurrentTaskAdapter.getItem(position-1);
+                String selectCaseId=selectTask.getAsString(DBModle.Task.CaseId);
+                toWait.putExtra(DBModle.Task.CaseId,selectCaseId);
+                if(selectTask.getAsString(DBModle.Task.CaseState).equals("0")){
+                    toWait.putExtra(DBModle.CallType.CallType,"first");
+                }else{
+                    toWait.putExtra(DBModle.CallType.CallType,"second");
+                }
+
+                startActivity(toWait);
+            }
+        });
     }
 
 
@@ -462,7 +494,12 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
                     JSONObject jsonObject=new JSONObject(response);
                     boolean dataSuccess=jsonObject.getBoolean("success");
                     if(dataSuccess){
-                        G.showToast(mContext,"success",false);
+                        String selectCaseId=jsonObject.getString("data");
+                        Intent toWait=new Intent(Main.this,WaitingActivity.class);
+                        toWait.putExtra(DBModle.Task.CaseId,selectCaseId);
+                        toWait.putExtra(DBModle.CallType.CallType,"first");
+                        startActivity(toWait);
+                        //G.showToast(mContext,"success",false);
                     }else {
                     JSONObject err=jsonObject.getJSONObject("err");
                         String message=err.getString("message");
@@ -473,35 +510,6 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
                     G.showToast(mContext,mContext.getResources().getString(R.string.response_exception),false);
                 }
             }else {
-                G.showToast(mContext,mContext.getResources().getString(R.string.response_false),false);
-            }
-        }
-    };
-
-    /**
-     * 请求视屏通信
-     * @param userName
-     */
-    public void callForVideo(String userName){
-DataHandler dataHandler=new DataHandler(mContext);
-       dataHandler.setmIsShowProgressDialog(true);
-        dataHandler.callForVideo(userName,mCallVideoResponse );
-    }
-    HttpResponseHandler mCallVideoResponse=new HttpResponseHandler(){
-        @Override
-        public void response(boolean success, String response, Throwable error) {
-           // super.response(success, response, error);
-            if(success){
-                try{
-                    JSONObject jsonObject=new JSONObject(response);
-//......
-                }catch (Exception e){
-                    e.printStackTrace();
-                    G.showToast(mContext,mContext.getResources().getString(R.string.response_exception),false);
-                    return;
-                }
-
-            }else{
                 G.showToast(mContext,mContext.getResources().getString(R.string.response_false),false);
             }
         }

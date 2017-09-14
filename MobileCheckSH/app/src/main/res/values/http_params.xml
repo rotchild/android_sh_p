@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="base_url1">http://192.168.1.14:3031/</string>
-    <string name="GETUSERNAME">api/Public/LoginCheck</string>
-    <string name="USERLOGIN">api/Public/UserLogin</string>
-    <string name="CREATETASK">api/Public/CreateTask</string>
-    <string name="GETTASKLIST">api/Public/GetCurrentTask</string>
-    <string name="CALLFORVIDEO">MobileCheckService/UserCheck</string>
+    <string name="GETUSERNAME">api/Mobile/LoginCheck</string>
+    <string name="USERLOGIN">api/Mobile/UserLogin</string>
+    <string name="CREATETASK">api/Mobile/CreateTask</string>
+    <string name="GETTASKLIST">api/Mobile/GetCurrentTask</string>
+    <string name="CALLFORVIDEO">api/Mobile/TaskCallConnect</string>
+    <string name="CALLFORVIDEODS">api/Mobile/DSUserCallConnect</string>
 
 
 
@@ -14,7 +15,8 @@
     <!-- 超时时间 :ms -->
     <integer name="http_time_out">15000</integer>
 
-    <string name="base_url">http://192.168.1.17:3031/</string>
+    <!--<string name="base_url">http://192.168.1.17:7091/</string>-->
+    <string name="base_url">http://192.168.1.19:7091/</string>
 
     <string name="url_UserCheck">MobileCheckService/UserCheck</string>
     <string name="url_GetTaskList">MobileCheckService/GetTaskList</string>

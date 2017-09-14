@@ -70,6 +70,7 @@ import cx.mobilechecksh.mvideo.picc.net.HttpResponseHandler;
 import cx.mobilechecksh.mvideo.picc.updateapp.UpdateAppDialog;
 import cx.mobilechecksh.mvideo.picc.utils.G;
 import cx.mobilechecksh.theme.MBaseActivity;
+import cx.mobilechecksh.utils.UserManager;
 
 @SuppressLint("ResourceAsColor")
 public class CameraMain extends MBaseActivity implements
@@ -164,8 +165,10 @@ SurfaceHolder.Callback ,Switcher.OnSwitchListener,OnClickListener,OnLongClickLis
 	private void initNetEncoder() {
 		Intent ServiceIntent = new Intent();
 		Bundle bundle = new Bundle();
-		bundle.putInt("sign",CameraManager.sign);
-		bundle.putString("serverIP", CameraManager.serverIp);
+		//bundle.putInt("sign",CameraManager.sign);
+		bundle.putInt("sign", UserManager.getInstance().getCameraSign());//从用户信息中获取
+		//bundle.putString("serverIP", CameraManager.serverIp);
+		bundle.putString("serverIP", UserManager.getInstance().getCameraIp());
 		bundle.putInt("captureW", CameraManager.previewWidth);
 		bundle.putInt("caputreH", CameraManager.previewHeight);
 		bundle.putBoolean("isUdp", SettingHelper.getInstance().getConnectType("UDP").equals("UDP")? true:false);
@@ -496,6 +499,7 @@ SurfaceHolder.Callback ,Switcher.OnSwitchListener,OnClickListener,OnLongClickLis
 	 * 处理退出的方法
 	 */
 	private void stop(){
+		unregisterReceiver(rssiBoradCastReceiver);
 		if (cameraManager!=null) {
 			cameraManager.release();
 			pictureManager.release();

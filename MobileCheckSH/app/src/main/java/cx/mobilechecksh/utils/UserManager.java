@@ -64,6 +64,16 @@ public class UserManager {
         return mSP.getBoolean("isLogin",false);
     }
 
+    public int getCameraSign(){
+        return mSP.getInt("CameraSign",30001);
+    }
+
+    public String getCameraIp(){
+        return  mSP.getString("CameraIp","");
+    }
+    public String getCameraPort(){
+        return mSP.getString("CameraPort","");}
+
     /**
      * when welcome act
      * @param ctx
@@ -90,15 +100,23 @@ public class UserManager {
      * @param UserName
      * @param DeviceNo
      * @param stationId
+     * @param accid
+     * @param token
      * @return
      */
-    public boolean saveUserInfo(Context ctx,String UserName,String DeviceNo,String stationId){
+    public boolean saveUserInfo(Context ctx,String UserName,String DeviceNo,String stationId,String accid,String token,boolean isLogin,String CameraIp,String CameraPort,String CameraSign){
         SharedPreferences sp=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE);
         //SharedPreferences.Editor editor=mContext.getSharedPreferences(PREFERENCE_USER,Context.MODE_PRIVATE).edit();
         SharedPreferences.Editor editor=sp.edit();
         editor.putString("UserName",UserName);
         editor.putString("DeviceNo",DeviceNo);
         editor.putString("StationId",stationId);
+        editor.putString("Accid",accid);
+        editor.putString("Token",token);
+        editor.putBoolean("isLogin",isLogin);
+        editor.putString("CameraIp",CameraIp);
+        editor.putString("CameraPort",CameraPort);
+        editor.putInt("CameraSign",Integer.parseInt(CameraSign));
         boolean saveSucc=editor.commit();
         if(saveSucc==false){
             Log.e(TAG,"saveUserInfo error  context:");

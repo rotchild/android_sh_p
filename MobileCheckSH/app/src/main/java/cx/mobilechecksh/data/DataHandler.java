@@ -8,9 +8,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
-import org.apache.http.protocol.HTTP;
-
-import cx.mobilechecksh.R;
 import cx.mobilechecksh.http.AsyncHttpClient;
 import cx.mobilechecksh.http.RequestParams;
 import cx.mobilechecksh.net.HttpParams;
@@ -121,20 +118,43 @@ public class DataHandler {
     }
 
     /**
-     * 请求视频通信
-     * @param UserName
+     * 请求视频
+     * @param DeviceNo
+     * @param TaskId
      * @param responseHandler
      */
-    public void callForVideo(String UserName,HttpResponseHandler responseHandler){
+    public void callForVideo(String DeviceNo,String TaskId,HttpResponseHandler responseHandler){
         Log.e("datahandler","callForVideo enter");
         mResponseHandler=responseHandler;
         if(mIsShowProgressDialog) mProgressDialog.show();
 
         String url=HttpParams.CALLFORVIDEO;
         RequestParams params=new RequestParams();
-        params.put("UserName",UserName);
+        params.put("device_no",DeviceNo);
+        params.put("task_id",TaskId);
+        mAsyncHttpClient.setSoTimeout(5*60*1000);
         mAsyncHttpClient.post(url,params,response);
     }
+
+    /**
+     * 任务已分配，定损中调用
+     * @param DeviceNo
+     * @param TaskId
+     * @param responseHandler
+     */
+    public void callForVideods(String DeviceNo,String TaskId,HttpResponseHandler responseHandler){
+        Log.e("datahandler","callForVideo enter");
+        mResponseHandler=responseHandler;
+        if(mIsShowProgressDialog) mProgressDialog.show();
+
+        String url=HttpParams.CALLFORVIDEODS;
+        RequestParams params=new RequestParams();
+        params.put("device_no",DeviceNo);
+        params.put("task_id",TaskId);
+        mAsyncHttpClient.setSoTimeout(5*60*1000);
+        mAsyncHttpClient.post(url,params,response);
+    }
+
 
     private final HttpResponseHandler response=new HttpResponseHandler(){
 

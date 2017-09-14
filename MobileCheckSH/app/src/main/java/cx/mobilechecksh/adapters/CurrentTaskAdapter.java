@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import cx.mobilechecksh.R;
@@ -20,7 +19,7 @@ import cx.mobilechecksh.data.DBModle;
  * Created by cx on 2017/8/22.
  */
 
-public class CurrentTaskAdapter extends BaseAdapter {
+public class CurrentTaskAdapter extends BaseAdapter implements View.OnClickListener{
     private Context mContext;
     private ArrayList<ContentValues> mData;
     private LayoutInflater mInflater;
@@ -34,15 +33,28 @@ public class CurrentTaskAdapter extends BaseAdapter {
     /**
      * 页面组件
      */
+
+    private MCallback mCallback;
+
     ViewHolder_wait holder_wait=null;
     ViewHolder_deal holder_deal=null;
 
-    public CurrentTaskAdapter(Context mContext, ArrayList<ContentValues> mData){
+
+    public CurrentTaskAdapter(Context mContext, ArrayList<ContentValues> mData,MCallback callback){
         super();
         this.mContext=mContext;
         this.mData=mData;
         this.mInflater=LayoutInflater.from(mContext);
+        mCallback=callback;
 
+    }
+    public interface MCallback{
+        public void click(View v);
+    }
+
+    @Override
+    public void onClick(View v) {
+        mCallback.click(v);
     }
 
 
@@ -77,7 +89,7 @@ public class CurrentTaskAdapter extends BaseAdapter {
                     holder_wait.caseState=(TextView)convertView.findViewById(R.id.casestate_val);
 
                     holder_wait.deleteLayout=(RelativeLayout)convertView.findViewById(R.id.delete_layout);
-
+                    holder_wait.deleteLayout.setTag(position);
                     convertView.setTag(holder_wait);
                     break;
                 case TYPE_DEAL:
@@ -92,7 +104,7 @@ public class CurrentTaskAdapter extends BaseAdapter {
 
                     holder_deal.takephotoLayout=(LinearLayout)convertView.findViewById(R.id.takephoto_layout);
                     holder_deal.callLayout=(LinearLayout)convertView.findViewById(R.id.call_layout);
-
+                    holder_deal.callLayout.setTag(position);
                     convertView.setTag(holder_deal);
                     break;
                 default:
@@ -172,13 +184,6 @@ public class CurrentTaskAdapter extends BaseAdapter {
         holder_deal.takephotoLayout.setOnClickListener(listener);
     }
 
-    /**
-     * 设置呼叫
-     * @param listener
-     */
-    public void setCallListener(View.OnClickListener listener){
-        holder_deal.callLayout.setOnClickListener(listener);
-    }
 
     public class ViewHolder_wait{
         //TextView caseNo,createTime,carNo,carType,caseState;
@@ -191,4 +196,6 @@ public class CurrentTaskAdapter extends BaseAdapter {
         TextView caseNo,createTime,carNo,caseState,dinsuner;
         LinearLayout takephotoLayout,callLayout;
     }
+
+
 }

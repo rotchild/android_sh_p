@@ -3,8 +3,8 @@ package cx.mobilechecksh.mobilecheck;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import cx.mobilechecksh.R;
@@ -23,9 +23,23 @@ public class WelcomeActivity extends MBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mContext=this;
+        jump();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);;
+        setContentView(R.layout.activity_welcome);
         intView();
+
+    }
+    /**
+     * 判断跳转页面
+     */
+    private void jump(){
+       if(UserManager.getInstance().isLogin()){
+           Log.e("wel","to Main");
+           Intent intent=new Intent(WelcomeActivity.this,Main.class);
+           startActivity(intent);
+           finish();
+       }
+        Log.e("wel","to Login");
 
     }
 

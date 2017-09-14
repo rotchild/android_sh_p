@@ -6,6 +6,8 @@ package cx.mobilechecksh.data;
 
 public class DBModle {
 public final static class Task{
+    /**案件id*/
+    public final static String CaseId="id";
     /**案件号 */
     public final static String CaseNo = "task_no";
     /**车牌号 */
@@ -24,6 +26,10 @@ public final static class Task{
     public final static String USName="username";
     /**定损员电话*/
     public final static String DSMobile="ds_user_mobile";
+
+}
+public static class CallType{
+    public final static String CallType="calltype";
 
 }
 }
