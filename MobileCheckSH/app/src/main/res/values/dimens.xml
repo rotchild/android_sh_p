@@ -1,6 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="default_size">16dp</dimen>
+    <dimen name="default_icon_size">20dp</dimen>
     <dimen name="text_title_size">24dp</dimen>
     <dimen name="text_tab_size">12dp</dimen>
     <dimen name="topHeight_size">50dp</dimen>
@@ -11,7 +12,7 @@
     <dimen name="block_radous">3dip</dimen>
     <dimen name="updatebar_height">62.0dip</dimen>
     <dimen name="default_padding">5.0dip</dimen>
-    <dimen name="btnw_small">40dp</dimen>
+    <dimen name="btnw_small">60dp</dimen>
 
     <dimen name="default_edittext_height">40dip</dimen>
 </resources>

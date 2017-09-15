@@ -155,6 +155,28 @@ public class DataHandler {
         mAsyncHttpClient.post(url,params,response);
     }
 
+    /**
+     * 取消视频呼叫
+     * @param stationId
+     * @param taskId
+     * @param responseHandler
+     */
+    public void cancelVideo(String stationId,String taskId,HttpResponseHandler responseHandler){
+        Log.e("datahandler","cancelVideo enter");
+        mResponseHandler=responseHandler;
+        if(mIsShowProgressDialog) mProgressDialog.show();
+
+        String url=HttpParams.CANCELVIDEO;
+        RequestParams params=new RequestParams();
+        params.put("station_id",stationId);
+        params.put("task_id",taskId);
+       // mAsyncHttpClient.setSoTimeout(5*60*1000);
+        mAsyncHttpClient.post(url,params,response);
+
+
+
+    }
+
 
     private final HttpResponseHandler response=new HttpResponseHandler(){
 

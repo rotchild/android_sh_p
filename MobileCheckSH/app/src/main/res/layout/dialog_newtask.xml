@@ -8,12 +8,13 @@
         android:id="@+id/caseno_rel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dialog_margin"
         >
         <EditText
             android:id="@+id/caseno_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
+            android:paddingLeft="@dimen/dialog_edit_padleft"
             android:layout_centerVertical="true"
             />
         <TextView
@@ -31,12 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/caseno_rel"
+        android:layout_margin="@dimen/dialog_margin"
         >
         <EditText
             android:id="@+id/carno_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
+            android:paddingLeft="@dimen/dialog_edit_padleft"
             android:layout_centerVertical="true"
             />
         <TextView

@@ -10,8 +10,8 @@
     >
 <ImageView
     android:id="@+id/newtask_img"
-    android:layout_width="@dimen/default_size"
-    android:layout_height="@dimen/default_size"
+    android:layout_width="@dimen/default_icon_size"
+    android:layout_height="@dimen/default_icon_size"
     android:scaleType="centerInside"
 
     android:layout_alignParentLeft="true"
@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/filttask_img"
-        android:layout_width="@dimen/default_size"
-        android:layout_height="@dimen/default_size"
+        android:layout_width="@dimen/default_icon_size"
+        android:layout_height="@dimen/default_icon_size"
         android:scaleType="centerInside"
 
         android:layout_alignParentRight="true"
@@ -70,6 +70,12 @@
             android:layout_height="wrap_content"
             android:text="拍照"
             />-->
+        <Button
+            android:id="@+id/toVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="摄像"
+            />
     <EditText
         android:id="@+id/cur_search_et"
         android:layout_width="match_parent"

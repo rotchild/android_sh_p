@@ -40,6 +40,9 @@ public class HttpParams {
     /**请求视频通信定损中*/
     public static String CALLFORVIDEODS="";
 
+    /**挂断视频请求*/
+    public static String CANCELVIDEO="";
+
     public static void init(Context ctx){
         BASEURL=ctx.getString(R.string.base_url);
         String preferencesIP=ctx.getSharedPreferences(PREFERENCES_HTTP,Context.MODE_PRIVATE).getString("ip","");
@@ -52,6 +55,7 @@ public class HttpParams {
         GETTASKLIST=BASEURL+ctx.getString(R.string.GETTASKLIST);
         CALLFORVIDEO=BASEURL+ctx.getString(R.string.CALLFORVIDEO);
         CALLFORVIDEODS=BASEURL+ctx.getString(R.string.CALLFORVIDEODS);
+        CANCELVIDEO=BASEURL+ctx.getString(R.string.CANCELVIDEO);
 
     }
 }

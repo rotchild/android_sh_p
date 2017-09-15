@@ -7,6 +7,7 @@
     <string name="GETTASKLIST">api/Mobile/GetCurrentTask</string>
     <string name="CALLFORVIDEO">api/Mobile/TaskCallConnect</string>
     <string name="CALLFORVIDEODS">api/Mobile/DSUserCallConnect</string>
+    <string name="CANCELVIDEO">api/Mobile/HangUpConnect</string>
 
 
 
@@ -15,7 +16,8 @@
     <!-- 超时时间 :ms -->
     <integer name="http_time_out">15000</integer>
 
-    <!--<string name="base_url">http://192.168.1.17:7091/</string>-->
+   <!-- <string name="base_url">http://192.168.1.17:7091/</string>-->
+    <!--<string name="base_url">http://192.168.1.67:7091/</string>-->
     <string name="base_url">http://192.168.1.19:7091/</string>
 
     <string name="url_UserCheck">MobileCheckService/UserCheck</string>

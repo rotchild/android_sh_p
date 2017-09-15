@@ -19,7 +19,7 @@ import cx.mobilechecksh.data.DBModle;
  * Created by cx on 2017/8/22.
  */
 
-public class CurrentTaskAdapter extends BaseAdapter implements View.OnClickListener{
+public class CurrentTaskAdapter extends BaseAdapter{
     private Context mContext;
     private ArrayList<ContentValues> mData;
     private LayoutInflater mInflater;
@@ -34,28 +34,26 @@ public class CurrentTaskAdapter extends BaseAdapter implements View.OnClickListe
      * 页面组件
      */
 
-    private MCallback mCallback;
+    private onItemCallListener mItemCallListener;
 
     ViewHolder_wait holder_wait=null;
     ViewHolder_deal holder_deal=null;
 
 
-    public CurrentTaskAdapter(Context mContext, ArrayList<ContentValues> mData,MCallback callback){
+    public CurrentTaskAdapter(Context mContext, ArrayList<ContentValues> mData){
         super();
         this.mContext=mContext;
         this.mData=mData;
         this.mInflater=LayoutInflater.from(mContext);
-        mCallback=callback;
-
     }
-    public interface MCallback{
-        public void click(View v);
+    public interface onItemCallListener{
+        public void onCallClick(int i);
     }
 
-    @Override
-    public void onClick(View v) {
-        mCallback.click(v);
+    public void setOnItemCallListener(onItemCallListener itemCallListener){
+        this.mItemCallListener=itemCallListener;
     }
+
 
 
     @Override
@@ -74,7 +72,7 @@ public class CurrentTaskAdapter extends BaseAdapter implements View.OnClickListe
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         int type=getItemViewType(position);
         if(convertView==null){
@@ -137,6 +135,12 @@ public class CurrentTaskAdapter extends BaseAdapter implements View.OnClickListe
                 //holder_deal.carType.setText(mData.get(position).getAsString(DBModle.Task.CarType));
                 holder_deal.caseState.setText(mData.get(position).getAsString(DBModle.Task.CaseState));
                 holder_deal.dinsuner.setText(mData.get(position).getAsString(DBModle.Task.CaseState));
+                holder_deal.callLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                            mItemCallListener.onCallClick(position);
+                    }
+                });
                 break;
             default:
                 break;

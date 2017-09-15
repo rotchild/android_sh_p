@@ -28,7 +28,7 @@
     <string name="call">呼叫</string>
 
     <string name="caseNo">报案号</string>
-    <string name="carNo">车牌号</string>
+    <string name="carNo">定损车牌号</string>
 
     <string name="about_system_text">手机查勘Android客户端</string>
     <string name="about_system_current_code">当前版本号:</string>

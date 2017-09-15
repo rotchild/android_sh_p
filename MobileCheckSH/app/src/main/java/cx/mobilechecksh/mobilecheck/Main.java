@@ -28,6 +28,7 @@ import cx.mobilechecksh.adapters.MainPageAdapter;
 import cx.mobilechecksh.data.DBModle;
 import cx.mobilechecksh.data.DataHandler;
 import cx.mobilechecksh.global.G;
+import cx.mobilechecksh.mvideo.camera.CameraMain;
 import cx.mobilechecksh.net.HttpResponseHandler;
 import cx.mobilechecksh.theme.MBaseActivity;
 import cx.mobilechecksh.ui.Dialog_NewTask;
@@ -35,7 +36,7 @@ import cx.mobilechecksh.ui.PullDownListView;
 import cx.mobilechecksh.utils.MRegex;
 import cx.mobilechecksh.utils.UserManager;
 
-public class Main extends MBaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner,CurrentTaskAdapter.MCallback
+public class Main extends MBaseActivity implements ViewPager.OnPageChangeListener,PullDownListView.OnRefreshListioner
 {
     Context mContext;
     private View mCurLayout,mHisLayout,mAddress,mMessage;
@@ -86,8 +87,6 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
     //任务相关
     Dialog_NewTask newTaskDg=null;
 
-    private View.OnClickListener clickListener=null;
-
     private PullDownListView mCurPullLV,mHisPullLV,mAddressPullLV,mMessagePullLV;
     private ListView mCurLV,mHisLV,mAddressLV,mMessageLV;
 
@@ -113,14 +112,14 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
     }
 
     private void initView() {
-/*        callVideo=(Button)findViewById(R.id.toVideo);
+        callVideo=(Button)findViewById(R.id.toVideo);
         callVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent toVideo=new Intent(mContext, CameraMain.class);
                 startActivity(toVideo);
             }
-        });*/
+        });
 
         mViewPager=(ViewPager)findViewById(R.id.mViewPager);
         //底部组件
@@ -287,17 +286,6 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
 
     }
 
-    /**
-     * MCallBack method impl
-     * @param v
-     */
-    @Override
-    public void click(View v) {
-        int clickpostion=(int)v.getTag();
-        ContentValues clickCV= (ContentValues) mCurrentTaskAdapter.getItem(clickpostion);
-        Log.e("main","clickpostion"+clickpostion);
-        startActivity(new Intent(Main.this,WaitingActivity.class));
-    }
 
     /** 获取数据 */
     public void getData() {
@@ -424,14 +412,15 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
      * @param listdata
      */
     public void setCurrentTaskLayout(ListView listView, final ArrayList<ContentValues> listdata){
-        mCurrentTaskAdapter=new CurrentTaskAdapter(mContext,listdata,this);
+        mCurrentTaskAdapter=new CurrentTaskAdapter(mContext,listdata);
         listView.setAdapter(mCurrentTaskAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        mCurrentTaskAdapter.setOnItemCallListener(new CurrentTaskAdapter.onItemCallListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("Main","position"+position+"id"+id);
+            public void onCallClick(int id) {
+               // Log.e("main","you click call item:"+i);
                 Intent toWait=new Intent(Main.this,WaitingActivity.class);
-                ContentValues selectTask= (ContentValues) mCurrentTaskAdapter.getItem(position-1);
+                ContentValues selectTask= (ContentValues) mCurrentTaskAdapter.getItem(id);
                 String selectCaseId=selectTask.getAsString(DBModle.Task.CaseId);
                 toWait.putExtra(DBModle.Task.CaseId,selectCaseId);
                 if(selectTask.getAsString(DBModle.Task.CaseState).equals("0")){
@@ -441,6 +430,23 @@ public class Main extends MBaseActivity implements ViewPager.OnPageChangeListene
                 }
 
                 startActivity(toWait);
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("Main","position"+position+"id"+id);
+/*                Intent toWait=new Intent(Main.this,WaitingActivity.class);
+                ContentValues selectTask= (ContentValues) mCurrentTaskAdapter.getItem(position-1);
+                String selectCaseId=selectTask.getAsString(DBModle.Task.CaseId);
+                toWait.putExtra(DBModle.Task.CaseId,selectCaseId);
+                if(selectTask.getAsString(DBModle.Task.CaseState).equals("0")){
+                    toWait.putExtra(DBModle.CallType.CallType,"first");
+                }else{
+                    toWait.putExtra(DBModle.CallType.CallType,"second");
+                }
+
+                startActivity(toWait);*/
             }
         });
     }
